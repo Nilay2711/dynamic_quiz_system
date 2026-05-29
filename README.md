@@ -82,7 +82,7 @@ php artisan key:generate
 
 ## Database Setup
 
-Update `.env` with MySQL credentials.
+Update `.env` with your MySQL database credentials.
 
 Run:
 
@@ -90,9 +90,86 @@ Run:
 php artisan migrate:fresh --seed
 ```
 
+This command will:
+
+* Create all database tables
+* Seed sample quiz data
+* Seed test user data
+
 ---
 
 ## Run Project
+
+### Start Laravel Server
+
+```bash
+php artisan serve
+```
+
+### Start Vite Development Server
+
+```bash
+npm run dev
+```
+
+---
+
+## Verify Functionality
+
+Open the application:
+
+```text
+http://127.0.0.1:8000/quizzes
+```
+
+The database seeder creates sample quiz data for testing.
+
+### Verify Quiz Management
+
+* View quizzes
+* Create a quiz
+* Delete a quiz
+
+### Verify Question Management
+
+* Add questions
+* Edit questions
+* Delete questions
+* Test all supported question types:
+  * Binary
+  * Single Choice
+  * Multiple Choice
+  * Number
+  * Text
+
+### Verify Quiz Attempt Flow
+
+* Attempt a quiz
+* Submit answers
+* Verify score calculation
+* Verify percentage calculation
+* Verify pass/fail status
+
+### Verify Attempt History
+
+* View previous attempts
+* Verify score history
+* Verify timestamps
+
+### Verify Media Features
+
+* Upload a question image
+* Add a YouTube video URL
+
+---
+
+## Useful Commands
+
+### Reset Database and Seed Data
+
+```bash
+php artisan migrate:fresh --seed
+```
 
 ### Start Laravel Server
 
@@ -106,14 +183,28 @@ php artisan serve
 npm run dev
 ```
 
+### Clear Laravel Cache
+
+```bash
+php artisan optimize:clear
+```
+
+### Run Database Seeder Only
+
+```bash
+php artisan db:seed
+```
+
 ---
 
-## Demo Credentials
+## Authentication
 
-No authentication required.
+Authentication is not implemented in this assignment.
+
+All features are accessible without login.
 
 ---
 
 ## Author
 
-Nilay Pandya
+**Nilay Pandya**
