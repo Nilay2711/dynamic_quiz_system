@@ -209,15 +209,28 @@ if (
 
     if (!empty($validated['options'])) {
 
-        foreach ($validated['options'] as $option) {
+        foreach ($validated['options'] as $index => $option) {
 
-            $question->options()->create([
+    $isCorrect = false;
 
-                'option_text' => $option['text'],
+    if ($validated['type'] === 'single_choice') {
 
-                'is_correct' => isset($option['is_correct']),
-            ]);
-        }
+        $isCorrect =
+            $request->correct_option == $index;
+
+    } elseif ($validated['type'] === 'multiple_choice') {
+
+        $isCorrect =
+            isset($option['is_correct']);
+    }
+
+    $question->options()->create([
+
+        'option_text' => $option['text'],
+
+        'is_correct' => $isCorrect,
+    ]);
+}
     }
 
     return redirect()
@@ -532,16 +545,28 @@ if (
 
     if (!empty($validated['options'])) {
 
-        foreach ($validated['options'] as $option) {
+        foreach ($validated['options'] as $index => $option) {
 
-            $question->options()->create([
+    $isCorrect = false;
 
-                'option_text' => $option['text'],
+    if ($validated['type'] === 'single_choice') {
 
-                'is_correct' =>
-                    isset($option['is_correct']),
-            ]);
-        }
+        $isCorrect =
+            $request->correct_option == $index;
+
+    } elseif ($validated['type'] === 'multiple_choice') {
+
+        $isCorrect =
+            isset($option['is_correct']);
+    }
+
+    $question->options()->create([
+
+        'option_text' => $option['text'],
+
+        'is_correct' => $isCorrect,
+    ]);
+}
     }
 
     return redirect()

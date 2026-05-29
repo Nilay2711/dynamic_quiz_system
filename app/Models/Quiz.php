@@ -3,25 +3,29 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use App\Models\Question;
+use App\Models\Attempt;
 
 class Quiz extends Model
 {
     protected $fillable = [
         'title',
-        'description',
+        'description'
     ];
 
-    public function questions(): HasMany
+    /*
+    |--------------------------------------------------------------------------
+    | Relationships
+    |--------------------------------------------------------------------------
+    */
+
+    public function questions()
     {
-        return $this->hasMany(Question::class)
-                    ->orderBy('sort_order');
+        return $this->hasMany(Question::class);
     }
 
-    public function attempts(): HasMany
+    public function attempts()
     {
         return $this->hasMany(Attempt::class);
     }
-
-  
 }
